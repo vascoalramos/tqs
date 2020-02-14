@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class SetOfNaturals implements Iterable<Integer> {
 
+    public static final int MIN_BOUND_NATURAL_NUMBER = 1;
     private ArrayList<Integer> collection = new ArrayList<>();
 
     public static SetOfNaturals fromArray(int[] values) {
@@ -17,9 +18,10 @@ public class SetOfNaturals implements Iterable<Integer> {
     }
 
     public void addFromArray(int element) {
-        if (!(this.collection.contains(element) || element <= 0)) {
-            collection.add(element);
+        if (this.collection.contains(element) || element < MIN_BOUND_NATURAL_NUMBER) {
+            return;
         }
+        collection.add(element);
     }
 
     public void add(int element) {
@@ -27,7 +29,7 @@ public class SetOfNaturals implements Iterable<Integer> {
             throw new IllegalArgumentException("duplicate value: " + element);
         }
 
-        if (element <= 0) {
+        if (element < MIN_BOUND_NATURAL_NUMBER) {
             throw new IllegalArgumentException("Illegal argument: not a natural number");
         }
 

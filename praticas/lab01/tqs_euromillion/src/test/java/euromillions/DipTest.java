@@ -8,7 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author ico0
@@ -35,10 +36,10 @@ public class DipTest {
     @Test
     public void testConstructorFromBadArrays() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Dip(new int[]{10, 20, 30, 40, 50, 60}, new int[]{1,2});
+            new Dip(new int[]{10, 20, 30, 40, 50, 60}, new int[]{1, 2});
         }, "IllegalArgumentException: invalid number of NUMBERS");
         assertThrows(IllegalArgumentException.class, () -> {
-            new Dip(new int[]{10, 20, 30, 40, 50}, new int[]{1,2, 3});
+            new Dip(new int[]{10, 20, 30, 40, 50}, new int[]{1, 2, 3});
         }, "IllegalArgumentException: invalid number of STARS");
     }
 

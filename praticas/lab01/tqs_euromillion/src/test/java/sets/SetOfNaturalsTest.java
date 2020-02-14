@@ -65,8 +65,8 @@ public class SetOfNaturalsTest {
 
     @Test
     public void testAddDuplicateArray() {
-        SetOfNaturals setD = SetOfNaturals.fromArray(new int[]{10, 20, 20, 30});
-        assertEquals(SetOfNaturals.fromArray(new int[]{10, 20, 30}).toString(), setD.toString());
+        SetOfNaturals setD = SetOfNaturals.fromArray(new int[]{1, 10, 20, 20, 30});
+        assertEquals(SetOfNaturals.fromArray(new int[]{1, 10, 20, 30}).toString(), setD.toString());
     }
 
 
