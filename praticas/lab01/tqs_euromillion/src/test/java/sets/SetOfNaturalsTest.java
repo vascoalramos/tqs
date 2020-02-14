@@ -77,6 +77,8 @@ public class SetOfNaturalsTest {
 
     @Test
     public void testContainsOperation() {
-        assertTrue(setB.contains(10), "set B, actually contains number 10 and funtion failed to found it");
+        assertTrue(setB.contains(10), "set B, actually contains number 10 and function provided a false negative");
+
+        assertFalse(setB.contains(1000), "set B, actually contains number 1000 and function provided a false positive");
     }
 }
