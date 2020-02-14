@@ -4,9 +4,11 @@
  */
 package euromillions;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author ico0
@@ -32,13 +34,16 @@ public class DipTest {
 
     @Test
     public void testConstructorFromBadArrays() {
-        // todo: instantiate a dip passing valid or invalid arrays
-        fail("constructor from bad arrays: test not implemented yet");
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Dip(new int[]{10, 20, 30, 40, 50, 60}, new int[]{1,2});
+        }, "IllegalArgumentException: invalid number of NUMBERS");
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Dip(new int[]{10, 20, 30, 40, 50}, new int[]{1,2, 3});
+        }, "IllegalArgumentException: invalid number of STARS");
     }
 
     @Test
     public void testFormat() {
-        // note: correct the implementation of the format(), not the test...
         String result = instance.format();
         assertEquals("N[ 10 20 30 40 50] S[  1  2]", result, "format as string: formatted string not as expected. ");
     }

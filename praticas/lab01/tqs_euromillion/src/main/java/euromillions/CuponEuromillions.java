@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * models cupon, i.e., a set of several dips, as submitted by a player
+ * models coupon, i.e., a set of several dips, as submitted by a player
  *
  * @author ico0
  */

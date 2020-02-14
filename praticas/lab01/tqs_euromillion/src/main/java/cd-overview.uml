@@ -3,19 +3,21 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="252.0" y="-34.5">euromillions.Dip</node>
-    <node x="-31.0" y="-16.5">sets.SetOfNaturals</node>
-    <node x="248.0" y="289.5">euromillions.EuromillionsDraw</node>
-    <node x="-36.5" y="307.5">euromillions.CuponEuromillions</node>
+    <node x="287.5" y="-12.5">euromillions.Dip</node>
+    <node x="-18.5" y="-26.5">sets.SetOfNaturals</node>
+    <node x="-26.5" y="355.5">euromillions.EuromillionsDraw</node>
+    <node x="419.0" y="341.5">euromillions.CuponEuromillions</node>
   </nodes>
   <notes />
   <edges />
-  <settings layout="Orthogonal" zoom="1.0" x="571.0" y="539.0" />
+  <settings layout="Orthogonal" zoom="1.0" x="438.0" y="535.0" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
     <Category>Methods</Category>
     <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

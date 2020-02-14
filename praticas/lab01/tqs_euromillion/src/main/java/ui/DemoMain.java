@@ -7,7 +7,7 @@ import euromillions.EuromillionsDraw;
 public class DemoMain {
 
     /**
-     * demonstrates a client for ramdom euromillions bets
+     * demonstrates a client for random lottery bets
      */
     public static void main(String[] args) {
 

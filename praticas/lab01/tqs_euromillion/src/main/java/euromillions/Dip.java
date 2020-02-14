@@ -1,9 +1,8 @@
 package euromillions;
 
-import java.util.Objects;
-
 import sets.SetOfNaturals;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -12,7 +11,6 @@ import java.util.Random;
  * @author ico0
  */
 public class Dip {
-
 
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
@@ -34,14 +32,6 @@ public class Dip {
 
     }
 
-    public SetOfNaturals getNumbersColl() {
-        return numbers;
-    }
-
-    public SetOfNaturals getStarsColl() {
-        return starts;
-    }
-
     public static Dip generateRandomDip() {
         Random generator = new Random();
 
@@ -61,6 +51,14 @@ public class Dip {
             }
         }
         return randomDip;
+    }
+
+    public SetOfNaturals getNumbersColl() {
+        return numbers;
+    }
+
+    public SetOfNaturals getStarsColl() {
+        return starts;
     }
 
     @Override
@@ -91,7 +89,7 @@ public class Dip {
 
 
     /**
-     * prepares a string representation of the data structure, formated for
+     * prepares a string representation of the data structure, formatted for
      * printing
      *
      * @return formatted string with data
@@ -104,8 +102,9 @@ public class Dip {
         }
         sb.append("] S[");
         for (int star : getStarsColl()) {
-            sb.append(String.format("%d", star));
+            sb.append(String.format("%3d", star));
         }
+        sb.append("]");
         return sb.toString();
     }
 }
