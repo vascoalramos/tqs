@@ -1,40 +1,66 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
-public class TqsStack {
+public class TqsStack<E> {
 
-    private ArrayList<Integer> stack;
+    public static final int MIN_SIZE = 1;
+    private List<E> stack;
+    private int max_size;
 
     public TqsStack() {
-        stack = new ArrayList<>();
+        this.stack = new ArrayList<E>();
+        this.max_size = -1;
     }
 
-    public boolean push(int x) {
-        stack.add(x);
-        return true;
+    public TqsStack(int max_size) {
+        if (max_size < MIN_SIZE) {
+            throw new IllegalArgumentException("Max Size: Stack max size should be an integer value bigger than 0");
+        }
+        this.stack = new ArrayList<E>();
+        this.max_size = max_size;
     }
 
-    public int pop() {
-        if (stack.isEmpty()) {
+    public boolean push(E e) {
+        if (this.isFull()) {
+            throw new IllegalStateException("Max Size: Stack is full");
+        }
+        return this.stack.add(e);
+    }
+
+    public E pop() {
+        try {
+            return this.stack.remove(this.stack.size() - 1);
+        } catch (IndexOutOfBoundsException e) {
             throw new NoSuchElementException();
         }
-        return stack.remove(stack.size()-1);
     }
 
-    public int peek() {
-        if (stack.isEmpty()) {
+    public E peek() {
+        if (this.stack.isEmpty()) {
             throw new NoSuchElementException();
         }
-        return stack.get(0);
+        return this.stack.get(this.stack.size() - 1);
     }
 
     public int size() {
-        return stack.size();
+        return this.stack.size();
     }
 
     public boolean isEmpty() {
-        return stack.isEmpty();
+        return this.stack.isEmpty();
     }
 
+    public boolean isFull() {
+        return (this.max_size != -1) && (this.size() >= this.max_size);
+    }
+
+    public void clear() {
+        this.stack.clear();
+    }
+
+    public void setMaxSize(int max_size) {
+        this.max_size = max_size;
+    }
 
 }
