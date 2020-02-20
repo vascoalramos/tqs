@@ -18,7 +18,9 @@ public class SetOfNaturals implements Iterable<Integer> {
     }
 
     public void addFromArray(int element) {
-        if (this.collection.contains(element) || element < MIN_BOUND_NATURAL_NUMBER) {
+        if (this.collection.contains(element)) {
+            return;
+        } else if (element < MIN_BOUND_NATURAL_NUMBER) {
             return;
         }
         collection.add(element);
@@ -27,12 +29,9 @@ public class SetOfNaturals implements Iterable<Integer> {
     public void add(int element) {
         if (this.collection.contains(element)) {
             throw new IllegalArgumentException("duplicate value: " + element);
-        }
-
-        if (element < MIN_BOUND_NATURAL_NUMBER) {
+        } else if (element < MIN_BOUND_NATURAL_NUMBER) {
             throw new IllegalArgumentException("Illegal argument: not a natural number");
         }
-
         collection.add(element);
     }
 
