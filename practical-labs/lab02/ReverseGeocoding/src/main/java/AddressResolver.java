@@ -1,8 +1,6 @@
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.http.client.utils.URIBuilder;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -22,7 +20,7 @@ public class AddressResolver {
         this.httpClient = httpClient;
     }
 
-    public Address findAddressForLocation(double latitude, double longitude) throws URISyntaxException, IOException, ParseException {
+    public Address findAddressForLocation(double latitude, double longitude) throws URISyntaxException, IOException {
 
         URIBuilder uriBuilder = new URIBuilder("http://open.mapquestapi.com/geocoding/v1/reverse?key=uXSAVwYWbf9tJmsjEGHKKAo0gOjZfBLQ");
         uriBuilder.addParameter("location", (new Formatter()).format(Locale.US, "%.4f,%.3f", latitude, longitude).toString());
@@ -33,14 +31,15 @@ public class AddressResolver {
         String response = this.httpClient.get(url);
 
         // get parts from response till reaching the address
-        JSONObject obj = (JSONObject) new JSONParser().parse(response);
-        obj = (JSONObject) ((JSONArray) obj.get("results")).get(0);
-        JSONObject address = (JSONObject) ((JSONArray) obj.get("locations")).get(0);
+        Gson gson = new Gson();
+        JsonObject obj = gson.fromJson(response, JsonObject.class);
+        JsonObject results = obj.getAsJsonArray("results").get(0).getAsJsonObject();
+        JsonObject address = results.getAsJsonArray("locations").get(0).getAsJsonObject();
 
-        String street = (String) address.get("street");
-        String city = (String) address.get("adminArea5");
-        String state = (String) address.get("adminArea3");
-        String zip = (String) address.get("postalCode");
+        String street = address.get("street").toString().replaceAll("\"","");
+        String city = address.get("adminArea5").toString().replaceAll("\"","");
+        String state = address.get("adminArea3").toString().replaceAll("\"","");
+        String zip = address.get("postalCode").toString().replaceAll("\"","");
         return new Address(street, city, state, zip, null);
     }
 }
