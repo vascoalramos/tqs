@@ -21,7 +21,6 @@ public class GeocodeTestIT {
 
     @Test
     void testValidCoordinates() throws URISyntaxException, IOException {
-        String responseJson = "{\"info\":{\"statuscode\":0,\"copyright\":{\"text\":\"\\u00A9 2020 MapQuest, Inc.\",\"imageUrl\":\"http://api.mqcdn.com/res/mqlogo.gif\",\"imageAltText\":\"\\u00A9 2020 MapQuest, Inc.\"},\"messages\":[]},\"options\":{\"maxResults\":1,\"thumbMaps\":true,\"ignoreLatLngInput\":false},\"results\":[{\"providedLocation\":{\"latLng\":{\"lat\":100.0,\"lng\":100.0}},\"locations\":[]}]}";
         assertThrows(IndexOutOfBoundsException.class, () -> addressResolver.findAddressForLocation(100, 100));
     }
 
