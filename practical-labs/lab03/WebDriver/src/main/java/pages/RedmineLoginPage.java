@@ -15,7 +15,7 @@ public class RedmineLoginPage {
 
     private SeleniumConfig config;
 
-    @FindBy(css="h1")
+    @FindBy(css = "h1")
     private WebElement title;
 
     public RedmineLoginPage(SeleniumConfig config) {
