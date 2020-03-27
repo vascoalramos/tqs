@@ -76,6 +76,16 @@ public class SetOfNaturalsTest {
     }
 
     @Test
+    public void testIntersectForSameSet() {
+        assertTrue(setB.intersects(setB), "existing intersection but was reported as non-existing");
+    }
+
+    @Test
+    public void testIntersectForDifferentSets() {
+        assertTrue(setB.intersects(setC), "existing intersection but was reported as non-existing");
+    }
+
+    @Test
     public void testContainsOperation() {
         assertTrue(setB.contains(10), "set B, actually contains number 10 and function provided a false negative");
 

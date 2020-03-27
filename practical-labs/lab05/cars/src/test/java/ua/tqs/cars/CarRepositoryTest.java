@@ -2,11 +2,8 @@ package ua.tqs.cars;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-
-import javax.annotation.Resource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,11 +17,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarRepositoryTest {
 
     @Autowired
-    private TestEntityManager entityManager;
-
-    @Resource
-    @Qualifier("CarRepository")
     private CarRepository carRepository;
+
+    @Autowired
+    private TestEntityManager entityManager;
 
     @Test
     void whenFindByName_thenReturnCar() {

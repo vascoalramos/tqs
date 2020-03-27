@@ -44,7 +44,11 @@ public class CarRestControllerIT {
         Car ford = new Car("mustang", "Ford");
         repository.saveAndFlush(ford);
 
-        mvc.perform(get("/api/cars/mustang").contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk()).andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$.name", is(ford.getName()))).andExpect(jsonPath("$.maker", is(ford.getMaker())));
+        mvc.perform(get("/api/cars/mustang").contentType(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("name", is(ford.getName())))
+                .andExpect(jsonPath("maker", is(ford.getMaker())));
     }
 
 

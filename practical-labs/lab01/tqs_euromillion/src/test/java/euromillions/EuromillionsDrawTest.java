@@ -11,7 +11,7 @@ public class EuromillionsDrawTest {
 
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         sampleCuppon = new CuponEuromillions();
         sampleCuppon.addDipToCuppon(Dip.generateRandomDip());
         sampleCuppon.addDipToCuppon(Dip.generateRandomDip());

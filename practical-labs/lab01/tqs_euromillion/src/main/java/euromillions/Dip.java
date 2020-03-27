@@ -16,6 +16,8 @@ public class Dip {
     public static final int NUMBER_OF_STARS = 2;
     public static final int MAX_RANGE_NUMBERS = 50;
     public static final int MAX_RANGE_STARS = 10;
+    private static Random generator = new Random();
+
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
 
@@ -37,24 +39,27 @@ public class Dip {
     }
 
     public static Dip generateRandomDip() {
-        Random generator = new Random();
-
         Dip randomDip = new Dip();
-        for (int i = 0; i < NUMBER_OF_NUMBERS; ) {
-            int candidate = generator.nextInt(MAX_RANGE_NUMBERS - 1) + 1;
+        int i = 0;
+        int candidate = 0;
+        while (i < NUMBER_OF_NUMBERS) {
+            candidate = generator.nextInt(MAX_RANGE_NUMBERS - 1) + 1;
             if (!randomDip.getNumbersColl().contains(candidate)) {
                 randomDip.getNumbersColl().add(candidate);
                 i++;
-
             }
         }
-        for (int i = 0; i < NUMBER_OF_STARS; ) {
-            int candidate = generator.nextInt(MAX_RANGE_STARS - 1) + 1;
+
+
+        i = 0;
+        while (i < NUMBER_OF_STARS) {
+            candidate = generator.nextInt(MAX_RANGE_STARS - 1) + 1;
             if (!randomDip.getStarsColl().contains(candidate)) {
                 randomDip.getStarsColl().add(candidate);
                 i++;
             }
         }
+
         return randomDip;
     }
 

@@ -27,18 +27,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CarControllerTest {
 
     @Autowired
-    private MockMvc mvc;
+    private MockMvc servlet;
 
     @MockBean
     private CarService service;
 
     @Test
-    public void givenCar_whenGetCars_thenReturnJsonArray() throws Exception {
-            Car tesla = new Car("modelS", "Tesla");
+    public void whenGetCar_thenReturnCar() throws Exception {
+        Car tesla = new Car("modelS", "Tesla");
 
         given(service.getCarDetails("modelS")).willReturn(tesla);
 
-        mvc.perform(get("/api/cars/modelS").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(jsonPath("$.id", is(tesla.getId()))).andExpect(jsonPath("$.name", is(tesla.getName()))).andExpect(jsonPath("$.maker", is(tesla.getMaker())));
+        servlet.perform(get("/api/cars/modelS").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andExpect(jsonPath("id", is(tesla.getId())))
+                .andExpect(jsonPath("name", is(tesla.getName())))
+                .andExpect(jsonPath("maker", is(tesla.getMaker())));
 
         verify(service, VerificationModeFactory.times(1)).getCarDetails("modelS");
         reset(service);

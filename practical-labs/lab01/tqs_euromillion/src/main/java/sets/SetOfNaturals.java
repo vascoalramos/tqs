@@ -18,12 +18,9 @@ public class SetOfNaturals implements Iterable<Integer> {
     }
 
     public void addFromArray(int element) {
-        if (this.collection.contains(element)) {
-            return;
-        } else if (element < MIN_BOUND_NATURAL_NUMBER) {
-            return;
+        if (!(this.collection.contains(element) || (element < MIN_BOUND_NATURAL_NUMBER))) {
+            collection.add(element);
         }
-        collection.add(element);
     }
 
     public void add(int element) {
@@ -46,6 +43,11 @@ public class SetOfNaturals implements Iterable<Integer> {
     }
 
     public boolean intersects(SetOfNaturals subset) {
+        for(Integer value : subset) {
+            if (this.contains(value)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -84,8 +86,6 @@ public class SetOfNaturals implements Iterable<Integer> {
 
     @Override
     public String toString() {
-        return "SetOfNaturals{" +
-                "collection=" + collection +
-                '}';
+        return "SetOfNaturals{" + "collection=" + collection + "}";
     }
 }

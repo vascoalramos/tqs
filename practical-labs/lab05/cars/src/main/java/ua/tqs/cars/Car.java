@@ -1,6 +1,9 @@
 package ua.tqs.cars;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 /**
@@ -15,8 +18,10 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Size(min = 3, max = 20)
     private String name;
+
     @Size(min = 3, max = 20)
     private String maker;
 
